@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Set-interval and Set-timeout</title>
+    <style>
+        body {
+            padding-top: 50px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 7rem;
+            color: #1e1e1e;
+        }
+        button {
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 8px;
+            margin-right: 1em;
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 4rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="time-display"></h1>
+    </div>
+
+    <button id="stop-time">Stop time</button>
+    <button id="start-time">Start time</button>
+
+    <h2 id="love-word">I Love you</h2>
+
+
+    
+    <script>
+        const stopTime = document.getElementById("stop-time");
+        const startTime = document.getElementById("start-time");
+        
+        const myInterval = setInterval(myTimer, 1000);
+
+        stopTime.addEventListener("click", myStopFunction);
+        startTime.addEventListener("click", myStartFunction);
+
+        function myTimer() {
+        const date = new Date();
+        document.getElementById("time-display").innerHTML = date.toLocaleTimeString();
+        }
+
+        function myStopFunction() {
+        clearInterval(myInterval);
+        }
+
+        function myStartFunction() {
+            setInterval(myTimer, 1000)
+        }
+
+        function revealWord() {
+            const myInspiration = document.getElementById("love-word")
+            myInspiration.style.display = "block"
+        }
+
+        setTimeout(revealWord, 5000)
+    </script>
+</body>
+</html>
